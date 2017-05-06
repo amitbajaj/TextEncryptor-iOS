@@ -11,10 +11,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Table View Controller-->
+        <!--Text Encryptor-->
         <scene sceneID="EA6-LB-VRL">
             <objects>
-                <tableViewController storyboardIdentifier="mainView" id="pRk-wz-t8u" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="mainView" id="pRk-wz-t8u" customClass="TextEncryptor" customModule="TextEncryptor" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" canCancelContentTouches="NO" dataMode="static" style="grouped" separatorStyle="singleLineEtched" rowHeight="580" sectionHeaderHeight="18" sectionFooterHeight="18" id="uoi-PR-FJH">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -87,6 +87,7 @@
                                                         <color key="titleColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                                                     </state>
                                                     <connections>
+                                                        <action selector="doEncrypt:" destination="pRk-wz-t8u" eventType="touchUpInside" id="Dkj-G2-SAR"/>
                                                         <action selector="selectAll:" destination="Weg-55-ymU" eventType="touchUpInside" id="uGf-xN-yf6"/>
                                                         <action selector="toggleBoldface:" destination="kt4-9e-42d" eventType="touchUpInside" id="p09-Bi-ve5"/>
                                                         <action selector="toggleItalics:" destination="kt4-9e-42d" eventType="touchUpInside" id="K1X-U0-r2v"/>
@@ -102,6 +103,9 @@
                                                     <state key="normal" title="Decrypt">
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="doDecrypt:" destination="pRk-wz-t8u" eventType="touchUpInside" id="w76-Db-r26"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -124,6 +128,10 @@
                     </tableView>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="414" height="736"/>
+                    <connections>
+                        <outlet property="txtPassField" destination="kt4-9e-42d" id="6rk-fd-yzK"/>
+                        <outlet property="txtSource" destination="Weg-55-ymU" id="Jx9-5l-dHp"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PCA-Yq-dmc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
