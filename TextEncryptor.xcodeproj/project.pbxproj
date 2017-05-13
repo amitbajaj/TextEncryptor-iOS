@@ -11,7 +11,7 @@
 		73200CAF1EB4754500D1F108 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73200CAD1EB4754500D1F108 /* Main.storyboard */; };
 		73200CB11EB4754500D1F108 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 73200CB01EB4754500D1F108 /* Assets.xcassets */; };
 		73200CB41EB4754500D1F108 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73200CB21EB4754500D1F108 /* LaunchScreen.storyboard */; };
-		737B40451EBB95900008E3D5 /* Encryptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737B40441EBB95900008E3D5 /* Encryptor.swift */; };
+		7367D05C1EC5AE21007D1C88 /* Encryptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7367D05B1EC5AE21007D1C88 /* Encryptor.swift */; };
 		73E49F5B1EB7C8D0004DC914 /* TextEncryptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73E49F5A1EB7C8D0004DC914 /* TextEncryptor.swift */; };
 		73E49F5D1EB7CE70004DC914 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73E49F5C1EB7CE70004DC914 /* ViewController.swift */; };
 /* End PBXBuildFile section */
@@ -23,8 +23,8 @@
 		73200CB01EB4754500D1F108 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		73200CB31EB4754500D1F108 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		73200CB51EB4754500D1F108 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7367D05B1EC5AE21007D1C88 /* Encryptor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Encryptor.swift; sourceTree = "<group>"; };
 		737B40411EBB94CB0008E3D5 /* TextEncryptor-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TextEncryptor-Bridging-Header.h"; sourceTree = "<group>"; };
-		737B40441EBB95900008E3D5 /* Encryptor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Encryptor.swift; path = ../Encryptor.swift; sourceTree = "<group>"; };
 		73E49F5A1EB7C8D0004DC914 /* TextEncryptor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextEncryptor.swift; sourceTree = "<group>"; };
 		73E49F5C1EB7CE70004DC914 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -64,7 +64,7 @@
 				73200CB01EB4754500D1F108 /* Assets.xcassets */,
 				73200CB21EB4754500D1F108 /* LaunchScreen.storyboard */,
 				73200CB51EB4754500D1F108 /* Info.plist */,
-				737B40441EBB95900008E3D5 /* Encryptor.swift */,
+				7367D05B1EC5AE21007D1C88 /* Encryptor.swift */,
 				73E49F5A1EB7C8D0004DC914 /* TextEncryptor.swift */,
 				73E49F5C1EB7CE70004DC914 /* ViewController.swift */,
 				737B40411EBB94CB0008E3D5 /* TextEncryptor-Bridging-Header.h */,
@@ -145,8 +145,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				737B40451EBB95900008E3D5 /* Encryptor.swift in Sources */,
 				73E49F5D1EB7CE70004DC914 /* ViewController.swift in Sources */,
+				7367D05C1EC5AE21007D1C88 /* Encryptor.swift in Sources */,
 				73200CAA1EB4754500D1F108 /* AppDelegate.swift in Sources */,
 				73E49F5B1EB7C8D0004DC914 /* TextEncryptor.swift in Sources */,
 			);

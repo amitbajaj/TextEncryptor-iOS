@@ -9,7 +9,6 @@
 import Foundation
 import UIKit
 
-
 class TextEncryptor: UITableViewController{
 
     @IBOutlet weak var txtSource: UITextView!
@@ -20,17 +19,49 @@ class TextEncryptor: UITableViewController{
         // Do any additional setup after loading the view, typically from a nib.
     }
     
+    @IBAction func doCopy(_ sender: UIButton){
+        let clipBoard = UIPasteboard.general
+        clipBoard.string = txtSource.text
+    }
+    
+    @IBAction func doPaste(_ sender: UIButton){
+        let clipBoard = UIPasteboard.general
+        txtSource.text = clipBoard.string
+    }
+    
     @IBAction func doEncrypt(_ sender: UIButton) {
+        let ae = AESEncryption();
+        let encData:Data;
+
         do{
-            txtSource.text = try txtSource.text.aesCBCEncrypt(key: txtPassField.text!).base64EncodedString()
+            encData = try ae.aesCBCEncrypt(data: (txtSource.text?.data(using: String.Encoding.utf8))!, keyDataP: (txtPassField.text?.data(using: String.Encoding.utf8))!);
+
+            txtSource.text = encData.base64EncodedString()
+            //txtSource.text = try txtSource.text.aesCBCEncrypt(key: txtPassField.text!).base64EncodedString();
+            /*
+            let alertController = UIAlertController(title: "Destructive", message: "Simple alertView demo with Destructive and Ok.", preferredStyle: UIAlertControllerStyle.alert)
+            
+            let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) {
+                (result : UIAlertAction) -> Void in
+                print("OK")
+            }
+            
+            alertController.addAction(okAction)
+            self.present(alertController, animated: true, completion: nil)
+            */
+            
         }catch let error{
             debugPrint(error.localizedDescription)
         }
     }
 
     @IBAction func doDecrypt(_ sender: UIButton) {
+        let ae = AESEncryption();
+        let decData:Data;
         do{
-            txtSource.text = try txtSource.text.aesCBCDecrypt(key: txtPassField.text!)
+            decData = try ae.aesCBCDecrypt(data: Data(base64Encoded: txtSource.text)!, keyDataP: (txtPassField.text?.data(using: String.Encoding.utf8))!)!
+            txtSource.text = String(data: decData, encoding: .utf8);
+            //txtSource.text = try txtSource.text.aesCBCDecrypt(key: txtPassField.text!)
         }catch let error{
             debugPrint(error.localizedDescription)
         }
