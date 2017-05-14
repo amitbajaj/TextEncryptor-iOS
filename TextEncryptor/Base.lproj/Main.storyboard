@@ -30,7 +30,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kt4-9e-42d">
-                                                    <rect key="frame" x="67" y="12.333333333333336" width="280" height="30"/>
+                                                    <rect key="frame" x="67" y="12.666666666666664" width="280" height="30"/>
                                                     <accessibility key="accessibilityConfiguration" identifier="txtPass"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="kt4-9e-42d" secondAttribute="height" multiplier="28:3" id="871-Bj-nIx"/>
@@ -56,9 +56,12 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SXm-bl-gs5">
-                                                    <rect key="frame" x="28" y="2" width="53" height="30"/>
+                                                    <rect key="frame" x="28" y="2" width="80" height="30"/>
                                                     <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <accessibility key="accessibilityConfiguration" identifier="btnEncrypt"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="80" id="BHP-az-g1V"/>
+                                                    </constraints>
                                                     <state key="normal" title="Encrypt">
                                                         <color key="titleColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                                                     </state>
@@ -67,11 +70,12 @@
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kie-pR-VmN">
-                                                    <rect key="frame" x="331" y="-1.3333333333333321" width="55" height="36"/>
+                                                    <rect key="frame" x="306" y="-1" width="80" height="36"/>
                                                     <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <accessibility key="accessibilityConfiguration" identifier="btnDecrypt"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" secondItem="kie-pR-VmN" secondAttribute="height" multiplier="23:15" id="6O7-k3-2Xn"/>
+                                                        <constraint firstAttribute="width" constant="80" id="5KG-MX-kRs"/>
+                                                        <constraint firstAttribute="width" secondItem="kie-pR-VmN" secondAttribute="height" multiplier="23:15" constant="24.799999999999997" id="6O7-k3-2Xn"/>
                                                     </constraints>
                                                     <state key="normal" title="Decrypt">
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -86,7 +90,6 @@
                                                 <constraint firstItem="SXm-bl-gs5" firstAttribute="leading" secondItem="Mfq-aj-efS" secondAttribute="leadingMargin" constant="20" id="UvE-wG-o5p"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="kie-pR-VmN" secondAttribute="trailing" constant="20" id="dPb-iR-qYu"/>
                                                 <constraint firstItem="SXm-bl-gs5" firstAttribute="centerY" secondItem="Mfq-aj-efS" secondAttribute="centerY" id="htQ-sv-l8x"/>
-                                                <constraint firstItem="SXm-bl-gs5" firstAttribute="leading" secondItem="Mfq-aj-efS" secondAttribute="leadingMargin" constant="20" id="waO-qf-8pV"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -99,9 +102,12 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3YO-Vi-wh1">
-                                                    <rect key="frame" x="28" y="4.3333333333333339" width="36" height="30"/>
+                                                    <rect key="frame" x="28" y="4" width="80" height="30"/>
                                                     <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <accessibility key="accessibilityConfiguration" identifier="btnEncrypt"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="80" id="71o-ZL-tg8"/>
+                                                    </constraints>
                                                     <state key="normal" title="Copy">
                                                         <color key="titleColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                                                     </state>
@@ -110,11 +116,11 @@
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TN9-Tj-tXf">
-                                                    <rect key="frame" x="340" y="4.3333333333333339" width="46" height="30"/>
+                                                    <rect key="frame" x="306" y="4" width="80" height="30"/>
                                                     <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <accessibility key="accessibilityConfiguration" identifier="btnDecrypt"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" secondItem="TN9-Tj-tXf" secondAttribute="height" multiplier="23:15" id="H3E-3C-c0u"/>
+                                                        <constraint firstAttribute="width" secondItem="TN9-Tj-tXf" secondAttribute="height" multiplier="23:15" constant="34" id="H3E-3C-c0u"/>
                                                     </constraints>
                                                     <state key="normal" title="Paste">
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -133,15 +139,15 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="tblCellTextView" rowHeight="423" id="w5M-WF-t2r">
-                                        <rect key="frame" x="0.0" y="163" width="414" height="423"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="tblCellTextView" rowHeight="498" id="w5M-WF-t2r">
+                                        <rect key="frame" x="0.0" y="163" width="414" height="498"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="w5M-WF-t2r" id="56c-TH-SQJ">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="422.66666666666669"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="498"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Weg-55-ymU">
-                                                    <rect key="frame" x="8" y="28" width="398" height="422"/>
+                                                    <rect key="frame" x="8" y="28" width="398" height="462"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <accessibility key="accessibilityConfiguration" identifier="txtSource"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -150,7 +156,7 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="Weg-55-ymU" firstAttribute="top" secondItem="56c-TH-SQJ" secondAttribute="top" constant="28" id="83D-lz-Ulr"/>
-                                                <constraint firstItem="Weg-55-ymU" firstAttribute="centerY" secondItem="56c-TH-SQJ" secondAttribute="centerY" constant="27.666666666666657" id="9HE-RL-axg"/>
+                                                <constraint firstItem="Weg-55-ymU" firstAttribute="centerY" secondItem="56c-TH-SQJ" secondAttribute="centerY" constant="10.166666666666657" id="9HE-RL-axg"/>
                                                 <constraint firstItem="Weg-55-ymU" firstAttribute="trailing" secondItem="56c-TH-SQJ" secondAttribute="trailingMargin" id="AAw-vs-BfI"/>
                                                 <constraint firstItem="Weg-55-ymU" firstAttribute="leading" secondItem="56c-TH-SQJ" secondAttribute="leadingMargin" id="Epq-1B-EDU"/>
                                             </constraints>
@@ -168,6 +174,7 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="414" height="736"/>
                     <connections>
+                        <outlet property="tblCellCopyPasteArea" destination="WPC-Pu-Zpt" id="O5b-oN-rsH"/>
                         <outlet property="txtPassField" destination="kt4-9e-42d" id="6rk-fd-yzK"/>
                         <outlet property="txtSource" destination="Weg-55-ymU" id="Jx9-5l-dHp"/>
                     </connections>

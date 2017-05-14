@@ -11,13 +11,32 @@ import UIKit
 
 class TextEncryptor: UITableViewController{
 
-    @IBOutlet weak var txtSource: UITextView!
-    
-    @IBOutlet weak var txtPassField: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        
+        //Uncomment the line below if you want the tap not not interfere and cancel other interactions.
+        tap.cancelsTouchesInView = false
+        
+        view.addGestureRecognizer(tap)
     }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    func dismissKeyboard(){
+        view.endEditing(true)
+    }
+
+    
+    
+    @IBOutlet weak var txtSource: UITextView!
+    @IBOutlet weak var tblCellCopyPasteArea: UITableViewCell!
+    
+    @IBOutlet weak var txtPassField: UITextField!
     
     @IBAction func doCopy(_ sender: UIButton){
         let clipBoard = UIPasteboard.general
