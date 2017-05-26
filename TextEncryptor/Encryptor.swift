@@ -81,6 +81,9 @@ class AESEncryption{
         }
         let ivSize = kCCBlockSizeAES128;
         let clearLength = size_t(data.count - ivSize)
+        if clearLength <= 0 {
+            throw AESError.CryptorError(("No data",100))
+        }
         var clearData = Data(count:clearLength)
         
         var numBytesDecrypted :size_t = 0
