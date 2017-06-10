@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "String.aesEncrypt(key : String, iv : String, options : Int) -&gt; String?:Encryptor.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "">
+            </PersistentString>
+            <PersistentString
+               value = "algoritm">
+            </PersistentString>
+            <PersistentString
+               value = "kCCKeySizeAES128">
+            </PersistentString>
+            <PersistentString
+               value = "self.data(using: String.Encoding.utf8).count">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>

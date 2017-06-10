@@ -33,9 +33,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "73200CA51EB4754500D1F108"
-            BuildableName = "TextEncryptor.app"
-            BlueprintName = "TextEncryptor"
-            ReferencedContainer = "container:TextEncryptor.xcodeproj">
+            BuildableName = "PasswordProtect.app"
+            BlueprintName = "PasswordProtect"
+            ReferencedContainer = "container:PasswordProtect.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -56,9 +56,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "73200CA51EB4754500D1F108"
-            BuildableName = "TextEncryptor.app"
-            BlueprintName = "TextEncryptor"
-            ReferencedContainer = "container:TextEncryptor.xcodeproj">
+            BuildableName = "PasswordProtect.app"
+            BlueprintName = "PasswordProtect"
+            ReferencedContainer = "container:PasswordProtect.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -86,6 +86,7 @@
    </AnalyzeAction>
    <ArchiveAction
       buildConfiguration = "Release"
+      customArchiveName = "PasswordProtect"
       revealArchiveInOrganizer = "YES">
    </ArchiveAction>
 </Scheme>

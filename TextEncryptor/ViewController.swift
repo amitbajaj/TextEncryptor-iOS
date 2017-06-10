@@ -10,6 +10,7 @@ import GoogleAPIClientForREST
 import GoogleSignIn
 import Foundation
 import UIKit
+import LocalAuthentication
 
 class ViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate{
     private let scopes = [kGTLRAuthScopeDrive,kGTLRAuthScopeDriveMetadata]
@@ -17,6 +18,7 @@ class ViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate{
     private let FILENAME = "TextEncryptor"
     private let MIMETYPE = "text/plain"
     private var wait: UIAlertController? = nil
+    private var googleUser: GIDGoogleUser? = nil
     //let signInButton = GIDSignInButton()
     
     @IBOutlet weak var btnGoogleSignIn: UIButton!
@@ -27,6 +29,23 @@ class ViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate{
     @IBOutlet weak var swSavePass: UISwitch!
     
     @IBOutlet weak var txtSource: UITextView!
+    @IBAction func myUnwindAction(unwindSegue: UIStoryboardSegue){
+        if(unwindSegue.identifier == "restoreBackTheMainScreen"){
+            //debugPrint("I am back")
+            let passEntry: PasswordEntry = unwindSegue.source as! PasswordEntry
+            //debugPrint("Got the view Controller")
+            if(passEntry.pinValidated){
+                //debugPrint("PIN is validated!!")
+                //debugPrint("Setting the google user auth")
+                self.service.authorizer = googleUser!.authentication.fetcherAuthorizer()
+                self.btnGoogleSignIn.isHidden=true;
+                self.btnLoad.isHidden=false;
+                self.btnSave.isHidden=false;
+                self.view.setNeedsDisplay()
+            }
+            
+        }
+    }
     
     @IBAction func doSignIn(_ sender: UIButton) {
         GIDSignIn.sharedInstance().signIn()
@@ -109,12 +128,30 @@ class ViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate{
         )
     }
     
+    func keyboardVisible(notification: NSNotification){
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            self.view.frame.origin.y = -1 * keyboardSize.height
+            let caret = txtSource.caretRect(for: txtSource.selectedTextRange!.start)
+            txtSource.scrollRectToVisible(caret, animated: true)
+        }
+    }
+    
+    func keyboardHidden(notification: Notification){
+        self.view.frame.origin.y = 0
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
-        tap.cancelsTouchesInView = false
+        //let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        //tap.cancelsTouchesInView = false
+        //view.addGestureRecognizer(tap)
         
-        view.addGestureRecognizer(tap)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardVisible),name: NSNotification.Name.UIKeyboardDidShow, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardHidden),name: NSNotification.Name.UIKeyboardDidHide, object: nil)
+        
+        
+        
         let defaults = UserDefaults.standard
         swSavePass.setOn(defaults.bool(forKey: "savePass"), animated: true)
         if swSavePass.isOn{
@@ -124,7 +161,7 @@ class ViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate{
         GIDSignIn.sharedInstance().uiDelegate = self
         GIDSignIn.sharedInstance().scopes = scopes
         GIDSignIn.sharedInstance().clientID = "11399004738-a6qb082kcvh6h1afkbusoaue3r6mmsbj.apps.googleusercontent.com"
-        GIDSignIn.sharedInstance().signInSilently()
+        //GIDSignIn.sharedInstance().signInSilently()
         btnLoad.isHidden=true;
         btnSave.isHidden=true;
         // Add the sign-in button.
@@ -139,10 +176,49 @@ class ViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate{
         } else {
             //self.signInButton.isHidden = true
             //self.output.isHidden = false
-            btnGoogleSignIn.isHidden=true;
-            btnLoad.isHidden=false;
-            btnSave.isHidden=false;
-            self.service.authorizer = user.authentication.fetcherAuthorizer()
+            googleUser = user
+            let context = LAContext()
+            
+            var error: NSError?
+            
+            if context.canEvaluatePolicy(
+                LAPolicy.deviceOwnerAuthenticationWithBiometrics,
+                error: &error) {
+                debugPrint("Touch ID is there")
+                // TouchID is available on the device
+                //debugPrint("TouchID is available")
+                context.evaluatePolicy(
+                    LAPolicy.deviceOwnerAuthenticationWithBiometrics,
+                    localizedReason: "Allow access to Google Drive...",
+                    reply: {(success, error) in
+                        if(success){
+                            //debugPrint("Got TouchID authenticated!!")
+                            self.service.authorizer = user.authentication.fetcherAuthorizer()
+                            self.btnGoogleSignIn.isHidden=true;
+                            self.btnLoad.isHidden=false;
+                            self.btnSave.isHidden=false;
+                            //self.view.setNeedsDisplay()
+                            
+                        }else{
+                            debugPrint(error.debugDescription)
+                            if((error as! LAError).code == LAError.userFallback){
+                                self.performSegue(withIdentifier: "ShowPasswordView", sender: self)
+                            }
+                        }
+                })
+            } else {
+                debugPrint("TouchID is not available.. loading PIN authentication")
+                self.performSegue(withIdentifier: "ShowPasswordView", sender: self)
+                /*
+                let sb = UIStoryboard(name: "Main", bundle: nil)
+                let vc = sb.instantiateViewController(withIdentifier: "PasswordEntry")
+                self.present(vc, animated: true, completion: {
+                    debugPrint("PasswordEntry view presented")
+                })
+ */
+                // TouchID is not available on the device
+                // No scanner or user has not set up TouchID
+            }
             //listFiles()
         }
     }
